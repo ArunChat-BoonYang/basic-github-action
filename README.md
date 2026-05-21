@@ -2,7 +2,7 @@
  
 Lab repo for **Lab 3 — GitHub Actions** and **Lab 3b — Secrets & Environment Variables**
 (see `resource/github-action-lab-guide.pdf`).
-..
+
 Minimal FastAPI app + Dockerfile + GitHub Actions workflows demonstrating CI build, test, and push to Docker Hub.
 
 ## Structure
@@ -100,14 +100,15 @@ docker run --rm -p 8000:8000 testapi
        MY_MSG: ${{ secrets.MY_SECRET_MESSAGE }}
    ```
 3. Push + view logs (secret masked as `***`)
-4. Add workflow-level `env:` block:
+   
+5. Add workflow-level `env:` block:
    ```yaml
    env:
      APP_NAME: my-fastapi-app
      NODE_ENV: production
    ```
    Use via `${{ env.APP_NAME }}`
-5. Try printing secret directly — confirm GitHub masks output:
+6. Try printing secret directly — confirm GitHub masks output:
    ```yaml
    - name: Try to print secret directly
      run: echo ${{ secrets.MY_SECRET_MESSAGE }}
